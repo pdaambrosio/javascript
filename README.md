@@ -1,0 +1,2 @@
+# javascript
+Example JavaScript code
