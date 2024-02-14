@@ -1,3 +1,6 @@
+// Async/Await is syntactic sugar on top of promises that makes your asynchronous code look and behave like synchronous code.
+// This further improves readability and error handling.
+
 // defining an async function:
 async function myAsyncFunction() {
     // Function body here
@@ -114,3 +117,25 @@ async function processArray(array) {
 async function processArray(array) {
     await Promise.all(array.map(item => processItem(item)));
 }
+
+
+// Example of an async function that fetches multiple resources:
+async function fetchMultipleResources(resourceUrls) {
+  const promises = resourceUrls.map(url => fetch(url).then(res => res.json()));
+  return await Promise.all(promises);
+}
+
+// Call the function:
+const urls = [
+  'https://api.example.com/resource1',
+  'https://api.example.com/resource2',
+  'https://api.example.com/resource3'
+];
+
+fetchMultipleResources(urls)
+  .then(results => {
+    console.log(results); // An array of results for each fetched resource
+  })
+  .catch(error => {
+    console.error('An error occurred:', error);
+  });

@@ -1,2 +1,3 @@
 # javascript
+
 Example JavaScript code
